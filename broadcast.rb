@@ -1,11 +1,10 @@
+require 'sinatra'
 require 'json'
 require 'open-uri'
-require 'sinatra'
 require 'twilio-ruby'
 
-TWILIO_NUMBER = '+15204473254'
-MY_NUMBER = '+13129526796'
-SPREADSHEET_ID = '1Uwn2bBpCFNvC4P71gqXFEJuFF-lL9c6qyMrNev-iffg'
+MY_NUMBER = ENV['MY_NUMBER']
+SPREADSHEET_ID = ENV['SPREADSHEET_ID']
 
 def spreadsheet_url
   "https://spreadsheets.google.com/feeds/list/#{SPREADSHEET_ID}/od6/public/values?alt=json"
@@ -56,7 +55,7 @@ end
 def send_to_contacts(body, media_url = nil)
   response = Twilio::TwiML::Response.new do |r|
     contacts_numbers.each do |num|
-      r.Message to: num, from: TWILIO_NUMBER do |msg|
+      r.Message to: num do |msg|
         msg.Body body
         msg.Media media_url unless media_url.nil?
       end
@@ -69,7 +68,7 @@ def send_to_me(from, body, media_url = nil)
   name = contact_name(from)
   body = "#{name} (#{from}):\n#{body}"
   response = Twilio::TwiML::Response.new do |r|
-    r.Message to: MY_NUMBER, from: TWILIO_NUMBER do |msg|
+    r.Message to: MY_NUMBER do |msg|
       msg.Body body
       msg.Media media_url unless media_url.nil?
     end

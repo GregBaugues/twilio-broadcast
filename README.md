@@ -6,7 +6,11 @@ There's a detailed blog post over on the Twilio blog on how I built this app. In
 
 ## Deploy to Heroku
 
-If you'd like to deploy your own version of it with minimal fuss, click the deploy to Heroku button you see here. You'll need to:
+If you'd like to deploy your own version of it with minimal fuss, click this button: 
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
+After that, you'll need to:
 
 * point the messaging webhook of a Twilio number at ```http://HEROKU_URL/message```.
 * set an environment variable called MY_NUMBER (your cellphone)

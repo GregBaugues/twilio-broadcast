@@ -1,0 +1,7 @@
+{
+  "name": "Broadcast Text Messages",
+  "description": "Broadcast text and picture messages using Twilio + Google Spreadsheets",
+  "repository": "https://github.com/GregBaugues/twilio-broadcast",
+  "logo": "https://www.twilio.com/packages/company/img/logos_downloadable_round.png",
+  "keywords": ["ruby", "sinatra", "twilio", "sms", "mms"]
+}
